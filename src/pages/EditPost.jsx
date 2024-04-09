@@ -25,7 +25,7 @@ function EditPost() {
   return (
     <div className='py-6'>
     <Container>
-      <PostForm post={post} />
+      <PostFrom post={post}/>
     </Container>
   </div>
   )

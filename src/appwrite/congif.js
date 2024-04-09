@@ -34,31 +34,54 @@ export class Service{
 
     async createPost({title, slug, content, featuredImage, status, userId}){
         try {
-            return await this.databases.createDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug, {title, slug, content, featuredImage, status, userId} )
+            return await this.databases.createDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+                    userId,
+                }
+            )
         } catch (error) {
-            console.log("appwrite service :: createPOst() :: ", error);
-            return false
+            console.log("Appwrite serive :: createPost :: error", error);
         }
     }
 
     async updatePost(slug, {title, content, featuredImage, status}){
-    try {
-        return await this.databases.updateDocument(conf.appwriteDatabaseId. conf.appwriteCollectionId, slug, {
-            title, content, featuredImage, status
-        })
-    } catch (error) {
-        console.log("appwrite service :: updatePost() :: ", error);
-            return false;
-    }
+        try {
+            return await this.databases.updateDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug,
+                {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+
+                }
+            )
+        } catch (error) {
+            console.log("Appwrite serive :: updatePost :: error", error);
+        }
     }
 
     async deletePost(slug){
         try {
-            await this.databases.deleteDocument(conf.appwriteDatabaseId, conf.appwriteCollectionId, slug)
-            return true;
+            await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug
+            
+            )
+            return true
         } catch (error) {
-            console.log("appwrite service :: deletePost() :: ", error);
-            return false;
+            console.log("Appwrite serive :: deletePost :: error", error);
+            return false
         }
     }
 
@@ -82,9 +105,12 @@ export class Service{
         }
     }
 
-     getFilePreview(fileId){
-        return this.bucket.getFilePreview(conf.appwriteBucketId, fileId).href
-     }
+    getFilePreview(fileId){
+        return this.bucket.getFilePreview(
+            conf.appwriteBucketId,
+            fileId
+        )
+    }
 
 
 }
