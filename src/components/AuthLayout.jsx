@@ -20,7 +20,7 @@ function Protected({children, authentication = true}) {
   }, [authStatus,authentication, navigate])
   
   return (
-    loader ?  <h1>Loafing</h1> : <>{children}</>
+    loader ?  <Loader/> : <>{children}</>
   )
 }
 

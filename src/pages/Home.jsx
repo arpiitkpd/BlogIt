@@ -17,7 +17,7 @@ function Home() {
       <div className='w-full py-8'>
       <Container>
         <div className='flex flex-wrap'>
-          <h1>No post to read or u are not logged in</h1>
+          <h1>No post to read or u are not logged in</h1> 
         </div>
       </Container>
     </div>

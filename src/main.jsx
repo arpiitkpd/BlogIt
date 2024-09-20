@@ -14,7 +14,7 @@ import AllPosts from './pages/AllPosts.jsx'
 import AddPost from './pages/AddPost.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
-import Test from './pages/Test.jsx'
+import Profile from './pages/Profile.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,9 +42,17 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "/all-posts",
+        path: "/profile",
         element:(
           <Protected authentication>
+            <Profile/>
+          </Protected>
+        )
+      },
+      {
+        path: "/all-posts",
+        element:(
+          <Protected authentication = {false}>
             <AllPosts/>
           </Protected>
         )
@@ -68,17 +76,12 @@ const router = createBrowserRouter([
       {
         path: "/post/:slug",
         element:(
-          <Protected authentication>
+          <Protected authentication ={false}>
             <Post/>
           </Protected>
         )
       },
-      {
-        path: "/test",
-        element:(
-          <Test/>
-        )
-      },
+      
     ]
   }
 ])

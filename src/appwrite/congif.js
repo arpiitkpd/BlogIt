@@ -56,7 +56,7 @@ export class Service{
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
-                slug,
+               slug,
                 {
                     title,
                     content,
@@ -82,6 +82,28 @@ export class Service{
         } catch (error) {
             console.log("Appwrite serive :: deletePost :: error", error);
             return false
+        }
+    }
+
+    async createProfile({name, userName , tag, bio, userId}){
+        try {
+            return await this.databases.createDocument(
+
+                cond.appwriteDatabaseId,
+                conf.appwriteProfileCollectionId,
+                
+                {
+                    name,
+                    userName,
+                    tag,
+                    userId,
+                    bio
+                }
+            )
+            
+        } catch (error) {
+            console.log("Appwrite serive :: createPost :: error", error);
+
         }
     }
 
